@@ -1,0 +1,24 @@
+# Terraform local dirs & state
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+
+# Local variable files (real values)
+terraform.tfvars
+*.auto.tfvars
+
+# Editor/OS junk
+*.swp
+*.swo
+.DS_Store
+
+# PKI / Secrets (when you add them later)
+pki/
+*.pem
+*.key
+*.crt
+*.csr
+
+# kubeconfigs (when you add them later)
+*kubeconfig
