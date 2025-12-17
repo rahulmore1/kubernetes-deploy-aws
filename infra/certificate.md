@@ -1,4 +1,6 @@
 ### Certificats on the Nodes and the cluster
+We basically are creatin a PKI for our K8 Cluster
+
 We use cfssl for creating certificats 
 You have to first crete config for the ca.
 
@@ -329,7 +331,26 @@ cfssl gencert \
 
 ```
 
-Distribute Certificates to Servers. 
+#### PKI Understand
+
+Before we start the distribution of the certificates , we might want to look at this PKI infrastructure we created. It is crucial, as this will clarify a lot of confusion that surrounds certificates. I have created a separate markdown , please refer to that before you move to distribution of keys. 
+
+
+
+#### Distribute Certificates to Servers. 
+
+##### To worker Node
+There are 2 nodes in our setup and the nodes need the following certificates 
+- ca.pem --> this is to trust the api and the etdc servers
+- Its own kubelet cert and the key. [node-0.pem, node-0-key.pem, etc.]
+
+```
+for host in node-0 node-1; do
+  echo ">>> Copying worker certs to ${host}"
+  scp -i ~/.ssh/id_ed25519_kthw ca.pem ${host}-key.pem ${host}.pem root@${host}:~/
+done
+
+```
 
 
 
