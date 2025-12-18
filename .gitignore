@@ -22,3 +22,12 @@ pki/
 
 # kubeconfigs (when you add them later)
 *kubeconfig
+
+**/*-key.pem
+**/ca-key.pem
+**/service-account-key.pem
+admin-csr.json
+ca-config.json
+ca-csr.json
+*-csr.json
+*-config.json
