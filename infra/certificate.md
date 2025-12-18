@@ -351,7 +351,31 @@ for host in node-0 node-1; do
 done
 
 ```
+##### To the control-plane server
 
+1. CA cert + CA key (for API server to verify clients, and for kube-controller-manager service-account signing)
+2. API server cert + key
+3. Service-account cert + key
+
+```
+scp -i ~/.ssh/id_ed25519_kthw \
+  ca.pem ca-key.pem \
+  kubernetes.pem kubernetes-key.pem \
+  service-account.pem service-account-key.pem \
+  root@server:~/
+
+```
+On nodes 
+```
+ls ~/*.pem
+# each worker should have: ca.pem, node-0.pem|node-1.pem, node-0-key.pem|node-1-key.pem
+```
+On server
+```
+ls ~/*.pem
+# should have: ca.pem, ca-key.pem, kubernetes.pem, kubernetes-key.pem,
+# service-account.pem, service-account-key.pem
+```
 
 
 
