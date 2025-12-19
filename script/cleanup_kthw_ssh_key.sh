@@ -47,7 +47,7 @@ read -r -p "Proceed with deleting the files above and removing this key from ssh
 case "${ANSWER}" in
   y|Y|yes|YES)
     echo
-    echo "🧹 Removing key from ssh-agent (if loaded)..."
+    echo "Removing key from ssh-agent (if loaded)..."
     if ssh-add -d "${KEY_PATH}" >/dev/null 2>&1; then
       echo " Key removed from ssh-agent cache: ${KEY_PATH}"
     else
@@ -75,6 +75,5 @@ case "${ANSWER}" in
     ;;
 esac
 
-echo
 echo "reminder: if you referenced this key in ~/.ssh/config (e.g. a Host for KTHW),"
 echo "you may also want to edit that file and remove or update that Host entry."
