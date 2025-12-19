@@ -5,7 +5,7 @@ set -euo pipefail
 KEY_PATH="${HOME}/.ssh/id_ed25519_kthw"
 PUB_PATH="${KEY_PATH}.pub"
 
-echo "🔐 KTHW SSH key cleanup"
+echo "KTHW SSH key cleanup"
 echo "Target private key : ${KEY_PATH}"
 echo "Target public key  : ${PUB_PATH}"
 echo
