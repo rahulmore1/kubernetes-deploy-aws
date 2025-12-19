@@ -13,17 +13,17 @@ echo
 # Check if files exist
 missing=true
 if [[ -f "${KEY_PATH}" ]]; then
-  echo "✅ Found private key: ${KEY_PATH}"
+  echo "Found private key: ${KEY_PATH}"
   missing=false
 else
-  echo "⚠️  Private key not found: ${KEY_PATH}"
+  echo "Private key not found: ${KEY_PATH}"
 fi
 
 if [[ -f "${PUB_PATH}" ]]; then
-  echo "✅ Found public key : ${PUB_PATH}"
+  echo "found public key : ${PUB_PATH}"
   missing=false
 else
-  echo "⚠️  Public key not found: ${PUB_PATH}"
+  echo "Public key not found: ${PUB_PATH}"
 fi
 
 if [[ "${missing}" == true ]]; then
@@ -34,7 +34,7 @@ else
 fi
 
 # Show keys currently loaded in ssh-agent (if any)
-echo "🔎 Checking ssh-agent for loaded keys..."
+echo " Checking ssh-agent for loaded keys"
 if ssh-add -l >/dev/null 2>&1; then
   echo "Currently loaded keys:"
   ssh-add -l || true
@@ -49,32 +49,32 @@ case "${ANSWER}" in
     echo
     echo "🧹 Removing key from ssh-agent (if loaded)..."
     if ssh-add -d "${KEY_PATH}" >/dev/null 2>&1; then
-      echo "✅ Key removed from ssh-agent cache: ${KEY_PATH}"
+      echo " Key removed from ssh-agent cache: ${KEY_PATH}"
     else
-      echo "ℹ️  Key not found in ssh-agent (or ssh-agent not running)."
+      echo "ℹ  Key not found in ssh-agent (or ssh-agent not running)."
     fi
 
     echo
-    echo "🗑  Deleting key files..."
+    echo " Deleting key files..."
     if [[ -f "${KEY_PATH}" ]]; then
       rm -f "${KEY_PATH}"
-      echo "✅ Deleted: ${KEY_PATH}"
+      echo "Deleted: ${KEY_PATH}"
     fi
 
     if [[ -f "${PUB_PATH}" ]]; then
       rm -f "${PUB_PATH}"
-      echo "✅ Deleted: ${PUB_PATH}"
+      echo " Deleted: ${PUB_PATH}"
     fi
 
     echo
-    echo "✅ Cleanup complete."
+    echo " Cleanup complete."
     ;;
   *)
     echo
-    echo "❎ Cleanup cancelled. No changes made."
+    echo " Cleanup cancelled. No changes made."
     ;;
 esac
 
 echo
-echo "📌 Reminder: if you referenced this key in ~/.ssh/config (e.g. a Host for KTHW),"
+echo "reminder: if you referenced this key in ~/.ssh/config (e.g. a Host for KTHW),"
 echo "you may also want to edit that file and remove or update that Host entry."
