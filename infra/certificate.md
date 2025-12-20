@@ -263,7 +263,7 @@ On Mac
 
 SERVER_INTERNAL_IP=$(ssh -i ~/.ssh/id_ed25519_kthw root@server "hostname -I | awk '{print \$1}'")
 
-KUBERNETES_HOSTNAMES="kubernetes,kubernetes.default,kubernetes.default.svc,kubernetes.default.svc.cluster,kubernetes.svc.cluster.local"
+KUBERNETES_HOSTNAMES="kubernetes,server.kubernetes.local,kubernetes.default,kubernetes.default.svc,kubernetes.default.svc.cluster,kubernetes.svc.cluster.local"
 
 ```
 CSR+Cert
