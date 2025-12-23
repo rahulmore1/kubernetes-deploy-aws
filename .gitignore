@@ -31,3 +31,5 @@ ca-config.json
 ca-csr.json
 *-csr.json
 *-config.json
+
+.idea/
